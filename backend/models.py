@@ -49,7 +49,7 @@ class User(Base):
     user_id = Column(Integer, primary_key=True, autoincrement=True)
     first_name = Column(String(100))
     last_name = Column(String(100))
-    mail = Column(String(150), unique=True)
+    mail = Column(String(150), unique=True, nullable=False)
     contact = Column(String(15))
     password = Column(String(255))
     is_active = Column(Boolean, default=True)
