@@ -40,7 +40,8 @@ app.add_middleware(
 )
 
 # Serve React static files
-app.mount("/static", StaticFiles(directory="../frontend/build/static"), name="static")
+app.mount("/static", StaticFiles(directory="../frontend/public"), name="static")
+
 
 # Root endpoint (must be above catch-all)
 @app.get("/")
@@ -65,5 +66,5 @@ app.include_router(auth_router, prefix="/auth", tags=["Auth"])
 def serve_react_app(full_path: str):
     if full_path == "":
         return {"message": "User Management System is running"}
-    file_path = os.path.join(os.path.dirname(__file__), "../frontend/build/index.html")
+    file_path = os.path.join(os.path.dirname(__file__), "../frontend/public/index.html")
     return FileResponse(file_path)
